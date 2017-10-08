@@ -1,0 +1,164 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layouts.cshtml";
+}
+@section jsFooter{
+<script src="~/Assets/client/js/controller/shopingcart.js"></script>
+<script src="~/Assets/admin/libs/numeral/numeral.js"></script>
+    }
+@section Banner{
+    <!--banner-->
+    <div class="banner-top">
+        <div class="container">
+            <h1>Giỏ Hàng</h1>
+            <em></em>
+            <h2><a href="/">Trang Chủ</a><label>/</label>Giỏ Hàng</h2>
+        </div>
+    </div>
+}
+
+<div class="check-out">
+    <div class="alert alert-warning" role="alert" style="display: none;" id="alertEmptyCart">Không có sản phẩm nào trong giỏ hàng 
+        <a href="/" class="alert-link">Xem thêm ở đây</a>
+    </div>
+    <div class="container" id="tableCart">
+        <div class="bs-example4" data-example-id="simple-responsive-table">
+            <div class="table-responsive">
+                <table class="table table-bordered" >
+                    <thead>
+                        <tr>
+                            <th>Sản Phẩm</th>
+                            <th>Giá</th>
+                            <th>Số Lượng </th>
+                            <th>Tổng Tiền</th>
+                            <th>Thao Tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cartBody">
+                       
+                        
+                    </tbody>
+                    <tfoot >
+                        <tr>
+                            <td colspan="5" align="right"><b>Tổng tiền: <span id="totalAmount"></span> đồng.</b></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <div class="produced">
+            <a href="#" id="buyMoreproduct" class="hvr-skew-backward">Tiếp tục mua hàng</a>
+            <a href="#" id="deleteAllCart" class="hvr-skew-backward">Xóa giỏ hàng</a>
+            <a href="#" id="checkOut" class="hvr-skew-backward">Thanh toán</a>
+        </div>
+        <br />
+        <br />
+        <div class="container" style="display: none;" id="frmCheckOut" >
+            <div class="col-md-6 contact-left">
+                <h3>At vero eos et accusamus et iusto odio dignissimos ducimus qui </h3>
+                <p>
+                    Blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas.
+                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas.At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas.
+                </p>
+
+
+                <div class="address">
+                    <div class=" address-grid">
+                        <i class="glyphicon glyphicon-map-marker"></i>
+                        <div class="address1">
+                            <h3>Address</h3>
+                            <p>
+                                Lorem ipsum dolor,
+                                TL 19034-88974
+                            </p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class=" address-grid ">
+                        <i class="glyphicon glyphicon-phone"></i>
+                        <div class="address1">
+                            <h3>Our Phone:</h3><h3>
+                                <p>+123456789</p>
+                            </h3>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class=" address-grid ">
+                        <i class="glyphicon glyphicon-envelope"></i>
+                        <div class="address1">
+                            <h3>Email:</h3>
+                            <p><a href="mailto:info@example.com"> Lorem@example.com</a></p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class=" address-grid ">
+                        <i class="glyphicon glyphicon-bell"></i>
+                        <div class="address1">
+                            <h3>Open Hours:</h3>
+                            <p>Monday-Friday, 7AM-5PM</p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 contact-top">
+                <h3>Thông tin người mua hàng</h3>
+                <br />
+                @if (Request.IsAuthenticated)
+                {
+                    <label class="checkbox1"><input type="checkbox" name="checkbox" id="useInfoLoged"><i> </i>Sử dụng thông tin đăng nhập</label>
+                    <br />
+                }
+               
+                <form>
+                    <div>
+                        <span>Họ tên </span>
+                        <input type="text" value="" id="txtName">
+                    </div>
+                    <div>
+                        <span>Địa chỉ Email </span>
+                        <input type="text" value="" id="txtEmail">
+                    </div>
+                    <div>
+                        <span>Số điện thoại</span>
+                        <input type="text" value="" id="txtNumberPhone">
+                    </div>
+                    <div>
+                        <span>Địa chỉ nhận hàng</span>
+                        <input type="text" value="" id="txtOderAddress">
+                    </div>
+                    <div>
+                        <span>Tin nhắn của bạn</span>
+                        <textarea id="txtMessage"> </textarea>
+                    </div>
+                    <label class="hvr-skew-backward">
+                        <input type="submit" id="submitConfirm" value="Xác nhận">
+                    </label>
+                </form>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+
+</div>
+
+@{Html.RenderAction("Brand", "Home");}
+<script id="cartTemplate" type="x-tmpl-mustache">
+    <tr class="cart-header">
+        <td class="ring-in">
+            <a href="#" class="at-in"><img src="{{productImage}}" class="img-responsive" alt=""></a>
+            <div class="sed">
+                <h5><a href="single.html">{{productName}}</a></h5>
+                <p>(At vero eos et accusamus et iusto odio dignissimos ducimus) </p>
+            </div>
+            <div class="clearfix"> </div>
+        </td>
+        <td>{{productPrice}}</td>
+        <td><input type="number" class="form-control txtQuantity" data-price="{{productPrice}}" value="{{productQuantity}}"  data-id={{productId}} placeholder="nhập số lượng"></td>
+        <td class="item_price" id="amount_{{productId}}">{{productAmount}}</td>
+        <td  class="add-check"><a class="item_add hvr-skew-backward btnDeleteItem" data-id="{{productId}}" href="#">Xóa</a></td>
+    </tr>
+</script>
+

@@ -1,0 +1,163 @@
+﻿@model TeduShop.Web.Models.FeedbackViewModel
+@using BotDetect.Web.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layouts.cshtml";
+    var contact = (TeduShop.Web.Models.ContactViewModel)ViewBag.Contact;
+}
+
+
+
+
+@section Banner{
+    <!--banner-->
+    <div class="banner-top">
+        <div class="container">
+            <h1>Contact</h1>
+            <em></em>
+            <h2><a href="index.html">Home</a><label>/</label>Products</h2>
+        </div>
+    </div>
+}
+@section Style{
+    <link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl" rel="stylesheet" type="text/css" />
+    <style>
+        #map {
+            height: 600px;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+}
+<div class="contact">
+    <div class="contact-form">
+        <div class="container">
+            <div class="col-md-6 contact-left">
+                <h3>At vero eos et accusamus et iusto odio dignissimos ducimus qui </h3>
+                <p>
+                    @contact.Content
+                </p>
+
+
+                <div class="address">
+                    <div class="address-grid">
+                        <i class="glyphicon glyphicon-map-marker"></i>
+                        <div class="address1">
+                            <h3>@contact.Address</h3>
+                            <p>
+                                Lorem ipsum dolor,
+                                TL @contact.PhoneNumber
+                            </p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="address-grid ">
+                        <i class="glyphicon glyphicon-phone"></i>
+                        <div class="address1">
+                            <h3>
+                                Our Phone:
+                            </h3>
+                            <p>+@contact.PhoneNumber</p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="address-grid ">
+                        <i class="glyphicon glyphicon-envelope"></i>
+                        <div class="address1">
+                            <h3>Email:</h3>
+                            <p><a href="mailto:@(contact.Email)"> @contact.Email</a></p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="address-grid">
+                        <i class="glyphicon glyphicon-bell"></i>
+                        <div class="address1">
+                            <h3>Giờ mở cửa:</h3>
+                            <p>Thứ 2 -Thứ 7, 7AM-5PM</p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 contact-top">
+                <h3>Muốn làm việc với chúng tôi?</h3>
+                @using (Html.BeginForm("Feedback", "Contact", FormMethod.Post))
+                {
+
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                    if (ViewData["Feedback"] == "Success")
+                    {
+                        <div class="alert alert-success" role="alert">Đã gửi phản hồi thành công</div>
+                    }
+                    if (ViewData["Feedback"] == "Failed")
+                    {
+                        <div class="alert alert-danger" role="alert">Phản hồi chưa được gửi đi, hãy thử lại</div>
+                    }
+                    <div>
+                        <span>Tên Bạn </span>
+                        @Html.TextBoxFor(x => x.Name)
+                    </div>
+                    <div>
+                        <span>Địa Chỉ Email </span>
+                        @Html.TextBoxFor(x => x.Email)
+                    </div>
+                    <div>
+                        <span>Đối Tượng</span>
+                        @Html.TextBoxFor(x => x.Subject)
+                    </div>
+                    <div>
+                        <span>Nội Dung</span>
+                        @Html.TextAreaFor(x => x.Message)
+                    </div>
+                    <div>
+                        @{ MvcCaptcha exampleCaptcha = new MvcCaptcha("ExampleCaptcha"); }
+                        @Html.Captcha(exampleCaptcha)
+                        @Html.TextBox("CaptchaCode")
+
+                    </div>
+                    <label class="hvr-skew-backward">
+                        <input type="submit" value="Gửi đi">
+                    </label>
+
+                }
+              
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div id="map"></div>
+    <script>
+
+        // This example displays a marker at the center of Australia.
+        // When the user clicks the marker, an info window opens.
+
+        function initMap() {
+            var uluru = { lat: 14.675249, lng: 109.065970 };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 17,
+                center: uluru
+            });
+
+            var contentString = "Day La google Map";
+
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+                title: '@contact.Name'
+            });
+            infowindow.open(map, marker);
+
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiG0pc-0e27jdDn7PQLEySEPUeQoXVGJ0&callback=initMap"
+            async defer></script>
+</div>

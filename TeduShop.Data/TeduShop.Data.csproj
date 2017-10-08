@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{97E2FA8E-0FCA-4758-9CBD-6F7C6192E739}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TeduShop.Data</RootNamespace>
+    <AssemblyName>TeduShop.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Infrastructure\DbFactory.cs" />
+    <Compile Include="Infrastructure\Disposable.cs" />
+    <Compile Include="Infrastructure\IDbFactory.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Migrations\201701210427097_firstTime.cs" />
+    <Compile Include="Migrations\201701210427097_firstTime.Designer.cs">
+      <DependentUpon>201701210427097_firstTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702120744456_TableError.cs" />
+    <Compile Include="Migrations\201702120744456_TableError.Designer.cs">
+      <DependentUpon>201702120744456_TableError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703061524031_identity.cs" />
+    <Compile Include="Migrations\201703061524031_identity.Designer.cs">
+      <DependentUpon>201703061524031_identity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703261032116_editModel.cs" />
+    <Compile Include="Migrations\201703261032116_editModel.Designer.cs">
+      <DependentUpon>201703261032116_editModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705041157245_NewTable.cs" />
+    <Compile Include="Migrations\201705041157245_NewTable.Designer.cs">
+      <DependentUpon>201705041157245_NewTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705080224288_addNhanMay.cs" />
+    <Compile Include="Migrations\201705080224288_addNhanMay.Designer.cs">
+      <DependentUpon>201705080224288_addNhanMay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705080240320_editDatabase.cs" />
+    <Compile Include="Migrations\201705080240320_editDatabase.Designer.cs">
+      <DependentUpon>201705080240320_editDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705080241581_editDatabase1.cs" />
+    <Compile Include="Migrations\201705080241581_editDatabase1.Designer.cs">
+      <DependentUpon>201705080241581_editDatabase1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705220651189_parentProductCategory.cs" />
+    <Compile Include="Migrations\201705220651189_parentProductCategory.Designer.cs">
+      <DependentUpon>201705220651189_parentProductCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705220657365_myNew.cs" />
+    <Compile Include="Migrations\201705220657365_myNew.Designer.cs">
+      <DependentUpon>201705220657365_myNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705230749080_mycs.cs" />
+    <Compile Include="Migrations\201705230749080_mycs.Designer.cs">
+      <DependentUpon>201705230749080_mycs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705230751382_mycj.cs" />
+    <Compile Include="Migrations\201705230751382_mycj.Designer.cs">
+      <DependentUpon>201705230751382_mycj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705230935595_ms.cs" />
+    <Compile Include="Migrations\201705230935595_ms.Designer.cs">
+      <DependentUpon>201705230935595_ms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707060712198_addContact.cs" />
+    <Compile Include="Migrations\201707060712198_addContact.Designer.cs">
+      <DependentUpon>201707060712198_addContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707060824447_EditContact.cs" />
+    <Compile Include="Migrations\201707060824447_EditContact.Designer.cs">
+      <DependentUpon>201707060824447_EditContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707060940001_editFeedback.cs" />
+    <Compile Include="Migrations\201707060940001_editFeedback.Designer.cs">
+      <DependentUpon>201707060940001_editFeedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707210934329_addnewElemant.cs" />
+    <Compile Include="Migrations\201707210934329_addnewElemant.Designer.cs">
+      <DependentUpon>201707210934329_addnewElemant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707260224552_editTableIdentity.cs" />
+    <Compile Include="Migrations\201707260224552_editTableIdentity.Designer.cs">
+      <DependentUpon>201707260224552_editTableIdentity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707260259247_AddGroupUser.cs" />
+    <Compile Include="Migrations\201707260259247_AddGroupUser.Designer.cs">
+      <DependentUpon>201707260259247_AddGroupUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707300314086_addnewOrderByInApplicationUser.cs" />
+    <Compile Include="Migrations\201707300314086_addnewOrderByInApplicationUser.Designer.cs">
+      <DependentUpon>201707300314086_addnewOrderByInApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707300320457_editUser.cs" />
+    <Compile Include="Migrations\201707300320457_editUser.Designer.cs">
+      <DependentUpon>201707300320457_editUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708030957375_addUserRole.cs" />
+    <Compile Include="Migrations\201708030957375_addUserRole.Designer.cs">
+      <DependentUpon>201708030957375_addUserRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708040036364_dropTable.cs" />
+    <Compile Include="Migrations\201708040036364_dropTable.Designer.cs">
+      <DependentUpon>201708040036364_dropTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ApplicationGroupRepository.cs" />
+    <Compile Include="Repositories\ApplicationRoleGroupRepository.cs" />
+    <Compile Include="Repositories\ApplicationRoleRepository.cs" />
+    <Compile Include="Repositories\ApplicationUserGroupRepository.cs" />
+    <Compile Include="Repositories\ChiTietSuaChuaRepository.cs" />
+    <Compile Include="Repositories\ContactRepository.cs" />
+    <Compile Include="Repositories\ErrorRepository.cs" />
+    <Compile Include="Repositories\FeedbackRepository.cs" />
+    <Compile Include="Repositories\FooterRepository.cs" />
+    <Compile Include="Repositories\KhachHangRepository.cs" />
+    <Compile Include="Repositories\MayTinhRepository.cs" />
+    <Compile Include="Repositories\MenuGroupRepository.cs" />
+    <Compile Include="Repositories\MenuRepository.cs" />
+    <Compile Include="Repositories\OrderDetailRepository.cs" />
+    <Compile Include="Repositories\OrderRepository.cs" />
+    <Compile Include="Repositories\PageRepository.cs" />
+    <Compile Include="Repositories\ParentProductCategoryRepository.cs" />
+    <Compile Include="Repositories\PostCategoryRepository.cs" />
+    <Compile Include="Repositories\PostRepository.cs" />
+    <Compile Include="Repositories\PostTagRepository.cs" />
+    <Compile Include="Repositories\ProductCategoryRepository.cs" />
+    <Compile Include="Repositories\ProductRepository.cs" />
+    <Compile Include="Repositories\ProductTagRepository.cs" />
+    <Compile Include="Repositories\SlideRepository.cs" />
+    <Compile Include="Repositories\SupportOnlineRepository.cs" />
+    <Compile Include="Repositories\SystemConfigRepository.cs" />
+    <Compile Include="Repositories\TagRepository.cs" />
+    <Compile Include="Repositories\VisitorStatisticRepository.cs" />
+    <Compile Include="TeduShopDbContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TeduShop.Common\TeduShop.Common.csproj">
+      <Project>{68d8f138-c74b-4c2f-8cec-16473d69f310}</Project>
+      <Name>TeduShop.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TeduShop.Model\TeduShop.Model.csproj">
+      <Project>{325ed08a-1c0e-424e-b070-b37685e4c8ce}</Project>
+      <Name>TeduShop.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201701210427097_firstTime.resx">
+      <DependentUpon>201701210427097_firstTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702120744456_TableError.resx">
+      <DependentUpon>201702120744456_TableError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703061524031_identity.resx">
+      <DependentUpon>201703061524031_identity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703261032116_editModel.resx">
+      <DependentUpon>201703261032116_editModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705041157245_NewTable.resx">
+      <DependentUpon>201705041157245_NewTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705080224288_addNhanMay.resx">
+      <DependentUpon>201705080224288_addNhanMay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705080240320_editDatabase.resx">
+      <DependentUpon>201705080240320_editDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705080241581_editDatabase1.resx">
+      <DependentUpon>201705080241581_editDatabase1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705220651189_parentProductCategory.resx">
+      <DependentUpon>201705220651189_parentProductCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705220657365_myNew.resx">
+      <DependentUpon>201705220657365_myNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705230749080_mycs.resx">
+      <DependentUpon>201705230749080_mycs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705230751382_mycj.resx">
+      <DependentUpon>201705230751382_mycj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705230935595_ms.resx">
+      <DependentUpon>201705230935595_ms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707060712198_addContact.resx">
+      <DependentUpon>201707060712198_addContact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707060824447_EditContact.resx">
+      <DependentUpon>201707060824447_EditContact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707060940001_editFeedback.resx">
+      <DependentUpon>201707060940001_editFeedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707210934329_addnewElemant.resx">
+      <DependentUpon>201707210934329_addnewElemant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707260224552_editTableIdentity.resx">
+      <DependentUpon>201707260224552_editTableIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707260259247_AddGroupUser.resx">
+      <DependentUpon>201707260259247_AddGroupUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707300314086_addnewOrderByInApplicationUser.resx">
+      <DependentUpon>201707300314086_addnewOrderByInApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707300320457_editUser.resx">
+      <DependentUpon>201707300320457_editUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708030957375_addUserRole.resx">
+      <DependentUpon>201708030957375_addUserRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708040036364_dropTable.resx">
+      <DependentUpon>201708040036364_dropTable.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,119 @@
+﻿@model TeduShop.Web.Infrastructure.Core.PaginationSet<TeduShop.Web.Models.ProductViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layouts.cshtml";
+    var startPageIndex = Math.Max(1, Model.Page - Model.MaxPage / 2);
+    var endPageIndex = Math.Min(Model.TotalPages, Model.Page + Model.MaxPage / 2);
+
+}
+@section Style{
+    <link href="/Assets/client/css/form.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Assets/client/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+}
+@section Banner{
+    <!--banner-->
+    <div class="banner-top">
+        <div class="container">
+            <h1>Products</h1>
+            <em></em>
+            <h2><a href="index.html">Home</a><label>/</label>Products</h2>
+        </div>
+    </div>
+}
+<!--content-->
+<div class="product">
+    <div class="container">
+        <div class="col-md-9">
+            <div class="mid-popular">
+                @foreach (var item in Model.Items)
+                {
+                    var url = "/" + item.Alias + ".p-" + item.ID + ".html";
+                    <div class="col-md-4 item-grid1 simpleCart_shelfItem">
+                        <div class="mid-pop">
+                            <div class="pro-img">
+                                <img src="@item.Images" class="img-responsive" alt="">
+                                <div class="zoom-icon ">
+                                    <a class="picture" href="@item.Images" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
+                                    <a href="@url"><i class="glyphicon glyphicon-menu-right icon"></i></a>
+                                </div>
+                            </div>
+                            <div class="mid-1">
+                                <div class="women">
+                                    <div class="women-top">
+                                        <span>Women</span>
+                                        <h6><a href="@url">@item.Name</a></h6>
+                                    </div>
+                                    <div class="img item_add">
+                                        <a href="#"><img src="/Assets/client/images/ca.png" alt="" data-id="@item.ID" class="btnAddToCart"></a>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="mid-2">
+                                    <p><label>$100.00</label><em class="item_price">$@item.Price</em></p>
+                                    <div class="block">
+                                        <div class="starbox small ghosting"> </div>
+                                    </div>
+
+                                    <div class="clearfix"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="clearfix"></div>
+                <nav>
+                    <ul class="pagination">
+                        @if (Model.Page > 1)
+                        {
+                            <li>
+                                <a href="?page=1" aria-label="First">
+                                    <i class="fa fa-angle-double-left"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="?page=@(Model.Page-1)" aria-label="Previous">
+                                    <i class="fa fa-angle-double-left"></i>
+                                </a>
+                            </li>
+                        }
+
+                        @for (int i = startPageIndex; i <= endPageIndex; i++)
+                        {
+                            if (Model.Page == i)
+                            {
+                                <li class="active"><a href="?page=@i" title="Trang @i">@i</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="?page=@i" title="Trang @i">@i</a></li>
+                            }
+                        }
+                        @if (Model.Page < Model.TotalPages)
+                        {
+                            <li>
+                                <a href="?page=@(Model.Page+1)" aria-label="Next">
+                                    <i class="fa fa-angle-double-right"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="?page=@Model.TotalPages" aria-label="Last">
+                                    <i class="fa fa-angle-double-right"></i>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        @{Html.RenderAction("ProductLeft", "Product");}
+        <div class="clearfix"></div>
+    </div>
+    <!--products-->
+    <!--//products-->
+    <!--brand-->
+    @{Html.RenderAction("Brand", "Home");}
+    <!--//brand-->
+</div>
+<!--//content-->

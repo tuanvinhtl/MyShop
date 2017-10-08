@@ -1,0 +1,58 @@
+﻿@model TeduShop.Web.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layouts.cshtml";
+}
+
+<div class="container">
+    <div class="login">
+        @using (Html.BeginForm("Register", "Acount", FormMethod.Post))
+        {
+            <div class="col-md-6 login-do">
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                <div class="login-mail">
+                    @Html.TextBoxFor(x => x.FullName, new { @placeholder = "Tên đầy đủ" })
+                    <i class="glyphicon glyphicon-user"></i>
+                </div>
+                <div class="login-mail">
+                    @Html.TextBoxFor(x => x.PhoneNumber, new { @placeholder = "Số điện thoại" })
+                    <i class="glyphicon glyphicon-phone"></i>
+                </div>
+                <div class="login-mail">
+                    @Html.TextBoxFor(x => x.Email, new { @placeholder = "Email" })
+                    <i class="glyphicon glyphicon-envelope"></i>
+                </div>
+                <div class="login-mail">
+                    @Html.TextBoxFor(x => x.UserName, new { @placeholder = "Tên đăng nhập" })
+                    <i class="glyphicon glyphicon-phone"></i>
+                </div>
+                <div class="login-mail">
+                    @Html.PasswordFor(x => x.Password, new { @placeholder = "Mật khẩu" })
+                    <i class="glyphicon glyphicon-lock"></i>
+                </div>
+                <a class="news-letter " href="#">
+                    <label class="checkbox1"><input type="checkbox" name="checkbox"><i> </i>Forget Password</label>
+                </a>
+                <label class="hvr-skew-backward">
+                    <input type="submit" value="Submit">
+                </label>
+
+            </div>
+            <div class="col-md-6 login-right">
+                <h3>Hoàn thành đăng ký tài khoản</h3>
+
+                <p>
+                    Pellentesque neque leo, dictum sit amet accumsan non, dignissim ac mauris. Mauris rhoncus, lectus tincidunt tempus aliquam, odio
+                    libero tincidunt metus, sed euismod elit enim ut mi. Nulla porttitor et dolor sed condimentum. Praesent porttitor lorem dui, in pulvinar enim rhoncus vitae. Curabitur tincidunt, turpis ac lobortis hendrerit, ex elit vestibulum est, at faucibus erat ligula non neque.
+                </p>
+                <a href="login.html" class="hvr-skew-backward">Login</a>
+
+            </div>
+
+            <div class="clearfix"> </div>
+        }
+
+    </div>
+
+</div>
+@{Html.RenderAction("Brand", "Home");}

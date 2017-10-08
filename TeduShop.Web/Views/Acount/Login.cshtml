@@ -1,0 +1,56 @@
+﻿@model TeduShop.Web.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layouts.cshtml";
+}
+@section Banner{
+    <!--banner-->
+    <div class="banner-top">
+        <div class="container">
+            <h1>Thành Viên</h1>
+            <em></em>
+            <h2><a href="/">Trang Chủ</a><label>/</label>Đăng Nhập</h2>
+        </div>
+    </div>
+}
+
+
+<div class="container">
+    <div class="login">
+        @using (Html.BeginForm("Login", "Acount", FormMethod.Post))
+        {
+           
+            <div class="col-md-6 login-do">
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                <div class="login-mail">
+                    @Html.TextBoxFor(x => x.UserName,new{ @placeholder = "Tên đăng nhập"})
+                    <i class="glyphicon glyphicon-envelope"></i>
+                </div>
+                <div class="login-mail">
+                   @Html.PasswordFor(x=>x.Password, new { @placeholder = "Mật khẩu" })
+                    <i class="glyphicon glyphicon-lock"></i>
+                </div>
+                <a class="news-letter " href="#">
+                    <label class="checkbox1">@Html.CheckBoxFor(x=>x.RememberMe)<i> </i>Nhớ mật khẩu</label>
+                </a>
+                <label class="hvr-skew-backward">
+                    <input type="submit" value="Đăng Nhập">
+                </label>
+            </div>
+            <div class="col-md-6 login-right">
+                <h3>Đăng ký miễn phí tài khoản</h3>
+
+                <p>
+                    Pellentesque neque leo, dictum sit amet accumsan non, dignissim ac mauris. Mauris rhoncus, lectus tincidunt tempus aliquam, odio
+                    libero tincidunt metus, sed euismod elit enim ut mi. Nulla porttitor et dolor sed condimentum. Praesent porttitor lorem dui, in pulvinar enim rhoncus vitae. Curabitur tincidunt, turpis ac lobortis hendrerit, ex elit vestibulum est, at faucibus erat ligula non neque.
+                </p>
+                <a href="/dang-ky" class="hvr-skew-backward">Đăng ký</a>
+
+            </div>
+
+            <div class="clearfix"> </div>
+        }
+
+    </div>
+</div>
+@{Html.RenderAction("Brand", "Home");}
